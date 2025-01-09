@@ -2,6 +2,7 @@ package com.app.graphqltemplate.presentation.continents
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.app.graphqltemplate.data.repoistory.Constant.ERROR_TEXT
 import com.app.graphqltemplate.domain.usecase.FetchContinentUseCase
 import com.app.graphqltemplate.utils.ApiResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,7 +31,7 @@ class ContinentsVM @Inject constructor(
         .onEach { apiResponse ->
             when (apiResponse) {
                 is ApiResponse.Error -> _continentResponse.value = ContinentsScreenUiState.Error(
-                    apiResponse.message ?: "Something went wrong Please try again!"
+                    apiResponse.message ?: ERROR_TEXT
                 )
 
                 is ApiResponse.Loading -> _continentResponse.value = ContinentsScreenUiState.Loading

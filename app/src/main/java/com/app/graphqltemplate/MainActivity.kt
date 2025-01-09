@@ -7,9 +7,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.app.graphqltemplate.presentation.continents.ContinentScreen
-import com.app.graphqltemplate.presentation.continents.ContinentsVM
+import androidx.navigation.compose.rememberNavController
+import com.app.graphqltemplate.presentation.navigation.AppNavigation
 import com.app.graphqltemplate.ui.theme.GraphQLTemplateTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,11 +18,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             GraphQLTemplateTheme {
-                val continentsVM: ContinentsVM = hiltViewModel()
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ContinentScreen(
+                    AppNavigation(
                         modifier = Modifier.padding(innerPadding),
-                        continentsVM = continentsVM
+                        navController = navController
                     )
                 }
             }
