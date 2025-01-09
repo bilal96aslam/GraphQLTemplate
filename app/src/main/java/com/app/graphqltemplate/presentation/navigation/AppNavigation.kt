@@ -28,10 +28,7 @@ fun AppNavigation(
             route = TopLevelDestination.Continents.route
         ) {
             val continentsVM: ContinentsVM = hiltViewModel()
-            ContinentScreen(
-                modifier = modifier,
-                continentsVM = continentsVM
-            ) { code ->
+            ContinentScreen(continentsVM = continentsVM, navController = navController) { code ->
                 navController.navigate(TopLevelDestination.ContinentDetails.withArgs(code))
             }
         }
@@ -50,8 +47,8 @@ fun AppNavigation(
                 continentDetailsVM.getContinentDetails(code)
             }
             ContinentDetailScreen(
-                modifier = modifier,
                 continentDetailsVM = continentDetailsVM,
+                navController = navController
             )
         }
     }

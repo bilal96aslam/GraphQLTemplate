@@ -2,9 +2,9 @@ package com.app.graphqltemplate.presentation.continentDetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.graphqltemplate.data.repoistory.Constant.ERROR_TEXT
 import com.app.graphqltemplate.domain.usecase.FetchContinentDetailUseCase
 import com.app.graphqltemplate.utils.ApiResponse
+import com.app.graphqltemplate.utils.Constant.ERROR_TEXT
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

@@ -1,8 +1,8 @@
 package com.app.graphqltemplate.data.repoistory
 
 import com.apollographql.apollo.ApolloClient
-import com.app.graphqltemplate.data.repoistory.Constant.ERROR_TEXT
 import com.app.graphqltemplate.domain.repository.CountryRepo
+import com.app.graphqltemplate.utils.Constant.ERROR_TEXT
 import src.main.qraphql.ContinentFetchingQuery
 import src.main.qraphql.FetchDetailsQuery
 
@@ -36,8 +36,4 @@ class CountryRepoImpl(private val apolloClient: ApolloClient) : CountryRepo {
             Result.failure(e)
         }
     }
-}
-
-object Constant {
-    const val ERROR_TEXT = "Something went wrong please try again!"
 }
