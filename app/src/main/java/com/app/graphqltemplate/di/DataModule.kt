@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object AppModule {
+object DataModule {
 
     @Singleton
     @Provides
@@ -22,6 +22,6 @@ object AppModule {
         .build()
 
     @Provides
-    fun provideApolloClient(apolloClient: ApolloClient) =
+    fun provideCountryRepo(apolloClient: ApolloClient) =
         CountryRepoImpl(apolloClient)
 }

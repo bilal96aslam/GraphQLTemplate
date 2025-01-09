@@ -22,7 +22,11 @@ class ContinentsVM @Inject constructor(
         MutableStateFlow<ContinentsScreenUiState>(ContinentsScreenUiState.Initial)
     val continentResponse: StateFlow<ContinentsScreenUiState> = _continentResponse.asStateFlow()
 
-    fun getContinents() = fetchContinentUseCase.invoke()
+    init {
+        getContinents()
+    }
+
+    private fun getContinents() = fetchContinentUseCase.invoke()
         .onEach { apiResponse ->
             when (apiResponse) {
                 is ApiResponse.Error -> _continentResponse.value = ContinentsScreenUiState.Error(

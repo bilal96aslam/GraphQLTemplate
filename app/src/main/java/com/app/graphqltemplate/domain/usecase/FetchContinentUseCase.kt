@@ -16,11 +16,8 @@ class FetchContinentUseCase @Inject constructor(
     operator fun invoke(): Flow<ApiResponse<ContinentFetchingQuery.Data>> = flow {
         emit(ApiResponse.Loading())
         val response = countryRepo.getContinents()
-        if (response.isSuccess) {
-            emit(ApiResponse.Success(data = response.getOrThrow()))
-        } else {
-            emit(ApiResponse.Error(response.exceptionOrNull()?.message.toString()))
-        }
+        if (response.isSuccess) emit(ApiResponse.Success(data = response.getOrThrow()))
+        else emit(ApiResponse.Error(response.exceptionOrNull()?.message.toString()))
     }.catch {
         emit(ApiResponse.Error(message = it.message.toString()))
     }.flowOn(Dispatchers.IO)
